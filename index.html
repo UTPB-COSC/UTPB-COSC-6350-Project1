@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Wi-Fi Network Map</title>
+    <style>
+      #map {
+        height: 90vh; /* Full-page height for the map */
+        width: 100%;
+      }
+      #buttons {
+        text-align: center;
+        margin: 10px 0;
+        margin: 5px;
+        background-color: grey;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+      #button {
+        cursor: pointer;
+      }
+      #legend {
+        background: white;
+        padding: 10px;
+        border: 1px solid black;
+        border-radius: 5px;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        z-index: 999;
+      }
+
+      #legend h3 {
+        margin: 0;
+        margin-bottom: 5px;
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      #legend ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      #legend li {
+        margin: 5px 0;
+        display: flex;
+        align-items: center;
+      }
+
+      #legend img {
+        width: 20px;
+        height: 20px;
+        margin-right: 5px;
+      }
+    </style>
+    <script defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvQHMs_m-QreLfmrnzh8D9SA6KsS3SfEo
+    &libraries=visualization&callback=initMap">
+</script>
+    <!-- Include the external JavaScript file containing data -->
+    <script src="wifi_data.js"></script>
+    <script src="map.js"></script>
+  </head>
+  <body onload="initMap()">
+    <div id="buttons">
+      <button onclick="showAllNetworks()">Show All Networks</button>
+      <button onclick="showCategory('none_WEP_1')">None/WEP (Phone 1)</button>
+      <button onclick="showCategory('WPA_1')">WPA (Phone 1)</button>
+      <button onclick="showCategory('WPA2_1')">WPA2 (Phone 1)</button>
+      <button onclick="showCategory('none_WEP_2')">None/WEP (Phone 2)</button>
+      <button onclick="showCategory('WPA_2')">WPA (Phone 2)</button>
+      <button onclick="showCategory('WPA2_1')">WPA2 (Phone 2)</button>
+      <button onclick="showCategory('WPA3')">WPA3 (Phone 2)</button>
+    </div>
+    <div id="map"></div>
+    <div id="legend">
+      <h3>Legend</h3>
+      <ul>
+        <li>
+          <img
+            src="https://maps.google.com/mapfiles/ms/icons/red-dot.png"
+            alt="None"
+          />
+          None
+        </li>
+        <li>
+          <img
+            src="https://maps.google.com/mapfiles/ms/icons/orange-dot.png"
+            alt="WEP"
+          />
+          WEP
+        </li>
+        <li>
+          <img
+            src="https://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
+            alt="WPA"
+          />
+          WPA
+        </li>
+        <li>
+          <img
+            src="https://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+            alt="WPA2"
+          />
+          WPA2
+        </li>
+        <li>
+          <img
+            src="https://maps.google.com/mapfiles/ms/icons/green-dot.png"
+            alt="WPA3"
+          />
+          WPA3
+        </li>
+        <li>
+          <img
+            src="https://maps.google.com/mapfiles/ms/icons/ltblue-dot.png"
+            alt="Unknown"
+          />
+          Unknown
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>
